@@ -32,15 +32,17 @@ The Config.yaml which is in the root path of the project is a config file that c
 5. Push the workbook to github
 
 ### The folder structure of Production path
-Production 
-|---------Folder1 
-               |----------Dashboard1.twb 
-               |----------Dashboard2(.twbx) 
-                              |------Data 
-                                       |--------Datasource 
-                                       |--------Extracets 
-                              |------Image 
-                              |------Dashboard2.twb 
+```
+Production  
+|---------Folder1  
+               |----------Dashboard1.twb  
+               |----------Dashboard2(.twbx)  
+                              |------Data  
+                                       |--------Datasource  
+                                       |--------Extracets  
+                              |------Image  
+                              |------Dashboard2.twb  
+```
 * When you are going to create new workbooks, please follow the structure, or you can publish workbooks to server first and download them to local then the structure will be created automatically.
 * You can ignore the structure when you sync the workbook from Tableau Server because it's automatic sturctured.
 
@@ -48,7 +50,7 @@ Production
 1. Please follow the workflow strictly
 2. Never change the files' name under the Production folder.
 
-Data lineage
+## Data lineage
 
 What is Data Lieage and why we need it:
 * Data Lineage is the way to describe what happens to data as it goes through diverse processes. It can help us trace how data has been collected and where values on the dashboard were deriving from.
@@ -58,6 +60,6 @@ We get three different objects from our data processes:
 * Mysql views
 * Mysql tables
 
-Tables -> views -> Tableau workbooks
+Tables -> views -> Tableau workbooks   
 
 First, we need the relationship between values on dashboards and the colunms of presto view. Parsing the XML files can help us to get this information. As we can't parse table names directly from XML if there are some custom sqls applied, to establish some underlying guideline is an alternative way to meet this requirement. Second, we also need information about views in the databases. Which physical tables the views derive from is the essential information to establish a comprehensive data lineage. But we still can't find a good way to extract the info for now. The problem is how to parse tables name from SQL queries. One way is using some special characters to tag tables, and then we can trace the tags to get the tables name.
